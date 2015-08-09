@@ -1,0 +1,55 @@
+<resources>
+
+
+    <string name="app_name">Wifi信号收集</string>
+    <string name="action_settings">设置</string>
+    <string name="frequency_info">采集频率(次/秒)</string>
+    <string name="total_length_info">单点采集次数</string>
+    <string name="btn_collect">收集坐标信息</string>
+    <string name="btn_collecting">正在收集, 剩余 %d 秒...</string>
+
+    <string name="main_title">Wifi信号收集器</string>
+    <string name="position_info">当前坐标(x, y)</string>
+    <string name="toggle_wlan">WLAN开关</string>
+    <string name="toggle_wlan_on">关闭WLAN</string>
+    <string name="toggle_wlan_off">开启WLAN</string>
+    <string name="title_activity_upload">UploadActivity</string>
+    <string name="action_upload">上传数据</string>
+
+
+    <string name="ftp_ip"> 服务器地址</string>
+    <string name="ftp_port"> 端口</string>
+    <string name="ftp_username"> 用户名</string>
+    <string name="ftp_passwd"> 密码</string>
+
+
+    <string name="btn_save">保存设置</string>
+    <string name="btn_upload">上传数据</string>
+    <string name="btn_delete">清空本地数据</string>
+
+    <string name="info_start_collecting">开始收集信号，请暂时不要移动设备，等待收集完成。</string>
+    <string name="info_collected">收集完毕!</string>
+    <string name="info_already_collecting">已经在收集wifi信号了，请稍安勿躁</string>
+    <string name="info_no_local_data">本地还没有数据，请收集数据之后再上传</string>
+
+    <string name="info_ftp_connect_fail">连接FTP失败</string>
+    <string name="info_ftp_login_fail">登陆FTP失败</string>
+    <string name="info_ftp_upload_fail">无法上传到FTP服务器</string>
+    <string name="info_ftp_upload_success">上传成功!</string>
+    <string name="info_ftp_unknown_result">未知结果 : </string>
+
+    <string name="info_sftp_connect_fail">连接SFTP失败</string>
+    <string name="info_sftp_login_fail">登陆SFTP失败</string>
+    <string name="info_sftp_upload_fail">无法上传到SFTP服务器</string>
+    <string name="info_sftp_upload_success">上传成功!</string>
+    <string name="info_sftp_unknown_result">未知结果 : </string>
+
+    <string name="info_config_saved">设置已保存</string>
+
+
+    <string name="info_delete_confirm">删除后数据不可恢复。确认要删除？</string>
+    <string name="info_delete_positive">删除</string>
+    <string name="info_delete_negative">不删除</string>
+    <string name="info_deleted">%s 目录下的csv文件已经删除</string>
+
+</resources>

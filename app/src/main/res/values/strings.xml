@@ -1,0 +1,55 @@
+<resources>
+
+
+    <string name="app_name">Wifi RSS Collector</string>
+    <string name="action_settings">Settings</string>
+    <string name="frequency_info">Collect frequency(/second)</string>
+    <string name="total_length_info">Collect times per point</string>
+    <string name="btn_collect">Collect Signal info</string>
+    <string name="btn_collecting">Collecting. Remains %d seconds...</string>
+
+    <string name="main_title">Wifi Signal Collector</string>
+    <string name="position_info">Current Coordinate(x, y)</string>
+    <string name="toggle_wlan">WLAN Switch</string>
+    <string name="toggle_wlan_on">Turn off WLAN</string>
+    <string name="toggle_wlan_off">Turn on WLAN</string>
+    <string name="title_activity_upload">UploadActivity</string>
+    <string name="action_upload">Upload Data</string>
+
+
+    <string name="ftp_ip">Server Address</string>
+    <string name="ftp_port">Port</string>
+    <string name="ftp_username">Username</string>
+    <string name="ftp_passwd">Password</string>
+
+
+    <string name="btn_save">Save Settings</string>
+    <string name="btn_upload">Upload Data</string>
+    <string name="btn_delete">Clear Local Data</string>
+
+    <string name="info_start_collecting">Starting collecting signal info，please keep your device stable until collection is done.</string>
+    <string name="info_collected">Data Collected</string>
+    <string name="info_already_collecting">Data is being collecting, please wait.</string>
+    <string name="info_no_local_data">Local data is empty. Please collect data before upload.</string>
+
+    <string name="info_ftp_connect_fail">Failed to connect FTP</string>
+    <string name="info_ftp_login_fail">Failed to login to FTP</string>
+    <string name="info_ftp_upload_fail">Failed to upload to FTP</string>
+    <string name="info_ftp_upload_success">Upload successfully!</string>
+    <string name="info_ftp_unknown_result">Unknown result : </string>
+
+    <string name="info_sftp_connect_fail">Failed to connect SFTP</string>
+    <string name="info_sftp_login_fail">Failed to login to SFTP</string>
+    <string name="info_sftp_upload_fail">Failed to upload to SFTP</string>
+    <string name="info_sftp_upload_success">Upload successfully!</string>
+    <string name="info_sftp_unknown_result">Unknown result : </string>
+
+    <string name="info_config_saved">Settings is saved.</string>
+
+    <string name="info_delete_confirm">After deleting, data could not be recovered. Are you sure to delete?</string>
+    <string name="info_delete_positive">Delete</string>
+    <string name="info_delete_negative">Do not delete</string>
+    <string name="info_deleted">csv files under %s directory have been deleted</string>
+
+
+</resources>

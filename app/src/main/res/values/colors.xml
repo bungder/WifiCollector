@@ -1,0 +1,7 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <drawable name="test_gray">#ccc</drawable>
+    <drawable name="test_red">#f00</drawable>
+
+</resources>

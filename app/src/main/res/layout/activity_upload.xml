@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#f0efe7"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/ftp_ip" />
+
+    <EditText
+        android:id="@+id/ftp_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ftp_port" />
+
+    <EditText
+        android:id="@+id/ftp_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ftp_username" />
+
+    <EditText
+        android:id="@+id/ftp_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ftp_passwd" />
+
+    <EditText
+        android:id="@+id/ftp_passwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
+
+    <RadioGroup
+        android:id="@+id/radios_protocol"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:layout_toLeftOf="@+id/main_title" >
+
+        <RadioButton
+            android:id="@+id/radio_ftp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ftp" />
+
+        <RadioButton
+            android:id="@+id/radio_sftp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sftp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#66CC00"
+        android:onClick="save"
+        android:text="@string/btn_save" />
+
+    <Button
+        android:id="@+id/button_upload"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#0099CC"
+        android:onClick="upload"
+        android:text="@string/btn_upload" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#CC3333"
+        android:onClick="delete"
+        android:text="@string/btn_delete" />
+
+</LinearLayout>
