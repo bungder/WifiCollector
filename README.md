@@ -2,13 +2,13 @@
 
 ## 1. Functions
 
-This is a simple android app that can do these things:
 1. Collect wifi signals;
 2. Save these signal data to csv files which locates at ${your phone storage}/002wifi/
 3. Upload these csv files to the specific server through FTP or SFTP
 
 
 ### 1.1 Examples of the csv file:
+
 2-1_2015-08-07.csv:
 
 > x,y,ssid,bsid,level,timestamp
