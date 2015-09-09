@@ -21,20 +21,12 @@
         android:theme="@style/Base.Widget.AppCompat.DrawerArrowToggle.Common" />
 
 
-    <View
-        android:id="@+id/divide_line_1"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/toggleButton_capture"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#90909090" />
-
     <TextView
         android:id="@+id/position_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divide_line_1"
+        android:layout_below="@+id/toggleButton_capture"
+        android:layout_marginTop="@dimen/abc_button_padding_horizontal_material"
         android:text="@string/position_info" />
 
     <LinearLayout
@@ -60,20 +52,12 @@
             android:inputType="numberDecimal" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/divide_line_2"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/leaner_layout_2"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#90909090" />
 
     <LinearLayout
         android:id="@+id/leaner_layout_3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divide_line_2" >
+        android:layout_below="@+id/leaner_layout_2" >
 
         <TextView
             android:id="@+id/frequency_info"
@@ -118,7 +102,7 @@
         android:layout_below="@+id/leaner_layout_5"
         android:text="@string/btn_collect"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:background="#47ffbd"
+        android:background="#76ff7c"
         android:backgroundTintMode="src_over"
         android:backgroundTint="#5cff64"
         android:clickable="true"

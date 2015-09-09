@@ -161,12 +161,10 @@ public class MainActivity extends AppCompatActivity {
                 ((ToggleButton)findViewById(R.id.toggleButton_capture)).setBackgroundColor(Color.rgb(0xFF, 0, 0)) ;
                 wpo.startScan() ;
                 resetCollectBtn();
-//				Toast.makeText(getApplicationContext(), "startScan", 2).show() ;
             }else{
                 ((ToggleButton)findViewById(R.id.toggleButton_capture)).setBackgroundColor(Color.rgb(0x76, 0xEE, 0)) ;
                 wpo.closeWifi() ;
                 disableCollectBtn();
-//				Toast.makeText(getApplicationContext(), "closeWifi", 2).show() ;
             }
         }
     }

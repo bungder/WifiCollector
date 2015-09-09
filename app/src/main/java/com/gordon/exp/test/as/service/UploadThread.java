@@ -76,7 +76,6 @@ public class UploadThread extends Thread {
 		final String message;
 		if (results == null || results.length == 0) {
 			message = activity.getString(R.string.info_no_local_data);
-//			message = "本地还没有数据，请收集数据之后再上传";
 		} else {
 			switch (results[0]) {
 			case CONNECT_FAIL:

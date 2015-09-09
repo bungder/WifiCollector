@@ -64,7 +64,8 @@ public class LocationPointInfo {
 			buffer.append(signal.getSsid());buffer.append(",");
 			buffer.append(signal.getBsid());buffer.append(",");
 			buffer.append(signal.getLevel());buffer.append(",");
-			buffer.append(signal.getTimestamp());
+			buffer.append(signal.getTimestamp());buffer.append(",");
+			buffer.append(signal.getCount());
 			lines[i++] = buffer.toString();
 			buffer.delete(0, buffer.length());
 		}
@@ -76,7 +77,7 @@ public class LocationPointInfo {
 	 * @return
 	 */
 	public String getCSVHeader(){
-		return "x,y,ssid,bsid,level,timestamp";
+		return "x,y,ssid,bsid,level,timestamp,count";
 	}
 	
 	/**

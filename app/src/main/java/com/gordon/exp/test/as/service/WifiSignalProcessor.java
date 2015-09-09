@@ -65,23 +65,20 @@ public class WifiSignalProcessor {
 	
 	/**
 	 * get current wifi signal information list
+	 * @param count remark that denotes in which loop these records are recorded. <br/>
+	 *              It makes it easier to depart train set and test set.
 	 * @return
 	 */
-	public List<Signal> getSignals(){
+	public List<Signal> getSignals(int count){
 		List<Signal> signals = new LinkedList<Signal>() ;
-//		StringBuilder sb = new StringBuilder();
 		for(ScanResult sr : scanResults){
 			Signal signal = new Signal() ;
 			signal.setSsid(sr.SSID) ;
 			signal.setBsid(sr.BSSID) ;
 			signal.setLevel(sr.level) ;
 			signal.setTimestamp(sr.timestamp) ;
+			signal.setCount(count);
 			signals.add(signal) ;
-			/*sb.append("ssid:").append(sr.SSID).append("\n");
-			sb.append("bssid:").append(sr.BSSID).append("\n");
-			sb.append("level:").append(sr.level).append("\n");
-			sb.append("timestamp:").append(sr.timestamp).append("\n");
-			sb.append("===========\n");*/
 		}
 		return signals ;
 	}

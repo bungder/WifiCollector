@@ -84,7 +84,7 @@ public class UploadActivity extends AppCompatActivity {
         }
         try {
             Config.save();
-            Toast.makeText(getApplicationContext(), getString(R.string.info_config_saved), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.info_config_saved), Toast.LENGTH_SHORT).show();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),

@@ -75,8 +75,9 @@ public class LocationRecorder extends Thread{
 			LocationPointInfo info =  new LocationPointInfo(location);
 			int gap = 1000/frequency;
 			final long t1 = System.currentTimeMillis();
+			int index = 1;
 			while(t1+duration > System.currentTimeMillis()){
-				info.addSignals(wifi.getSignals());
+				info.addSignals(wifi.getSignals(index++));
 				wifi.startScan();
 				new Handler(Looper.getMainLooper()).post(new Runnable() {
 					@Override
@@ -84,7 +85,6 @@ public class LocationRecorder extends Thread{
 						if(handler != null){
 							String info = String.format(activity.getString(R.string.btn_collecting), ((t1+duration-System.currentTimeMillis()+999)/1000));
 							handler.setCollectButtonText(info);
-//							handler.setCollectButtonText("正在收集，剩余"+((t1+duration-System.currentTimeMillis()+999)/1000)+"秒...");
 						}
 					}
 				});

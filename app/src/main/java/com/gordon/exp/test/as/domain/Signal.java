@@ -12,6 +12,10 @@ public class Signal {
 	private String bsid ;
 	private int level ;
 	private long timestamp ;
+	/**remark that denotes in which loop these records are recorded. <br/>
+	 * It makes it easier to depart train set and test set.*/
+	private int count;
+
 	public String getSsid() {
 		return ssid;
 	}
@@ -36,9 +40,27 @@ public class Signal {
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
+
+	/**
+	 *
+	 * @return remark that denotes in which loop these records are recorded. <br/>
+	 * It makes it easier to depart train set and test set.
+	 */
+	public int getCount(){
+		return count;
+	}
+
+	/**
+	 *
+	 * @param count remark that denotes in which loop these records are recorded. <br/>
+	 * It makes it easier to depart train set and test set.
+	 */
+	public void setCount(int count){
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "Signal [ssid=" + ssid + ", bsid=" + bsid + ", level=" + level
-				+ ", timestamp=" + timestamp + "]";
+				+ ", timestamp=" + timestamp + ", count=" + count + "]";
 	}
 }
