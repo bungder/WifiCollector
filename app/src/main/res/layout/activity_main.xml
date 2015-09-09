@@ -110,6 +110,41 @@
         android:enabled="true"
         android:focusableInTouchMode="true" />
 
+    <LinearLayout
+        android:id="@+id/coordinate_control"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_button_padding_horizontal_material"
+        android:layout_below="@+id/button_collect">
+        <Button
+            android:id="@+id/btn_xpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_xpp"
+            android:onClick="click_xpp"
+            />
+        <Button
+            android:id="@+id/btn_xmm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_xmm"
+            android:onClick="click_xmm"
+            />
+        <Button
+            android:id="@+id/btn_ypp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_ypp"
+            android:onClick="click_ypp"
+            />
+        <Button
+            android:id="@+id/btn_ymm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_ymm"
+            android:onClick="click_ymm"
+            />
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -62,7 +62,7 @@ public class LocationRecorder extends Thread{
 				public void run() {
 					if(handler != null){
 						handler.setWIFIToggleEnable(false);
-						handler.disableCollectButton();
+						handler.disableViewComponents();
 					}
 				}
 
@@ -110,7 +110,7 @@ public class LocationRecorder extends Thread{
 							Toast.LENGTH_LONG).show();
 					if(handler != null){
 						handler.setWIFIToggleEnable(true);
-						handler.resetCollectButton();
+						handler.resetViewComponents();
 					}
 				}
 

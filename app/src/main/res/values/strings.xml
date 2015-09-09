@@ -7,6 +7,12 @@
     <string name="total_length_info">Collect times per point</string>
     <string name="btn_collect">Collect Signal info</string>
     <string name="btn_collecting">Collecting. Remains %d seconds...</string>
+    <string name="btn_xpp">x++</string>
+    <string name="btn_xmm">x--</string>
+    <string name="btn_ypp">y++</string>
+    <string name="btn_ymm">y--</string>
+
+    <string name="err_coor_not_num">Coordinate must be integer.</string>
 
     <string name="main_title">Wifi Signal Collector</string>
     <string name="position_info">Current Coordinate(x, y)</string>

@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.frequency)).setText(""+Config.getFrequency()) ;
 //        ((EditText)findViewById(R.id.duration)).setText(""+Config.getDuration()) ;
         ((EditText)findViewById(R.id.total_length)).setText("" + Config.getTotalLength()) ;
-        ((EditText)findViewById(R.id.editText_x)).setText("999999") ;
-        ((EditText)findViewById(R.id.editText_y)).setText("999999") ;
+        ((EditText)findViewById(R.id.editText_x)).setText("-2") ;
+        ((EditText)findViewById(R.id.editText_y)).setText("-2") ;
 
         // Button to record wifi signal
         ((Button)this.findViewById(R.id.button_collect)).setOnClickListener(new CollectButtonClickListener(this)) ;
@@ -91,16 +91,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void resetCollectBtn(){
+    private void resetComponents(){
         Button btn = (Button)this.findViewById(R.id.button_collect) ;
         btn.setText(R.string.btn_collect);
         btn.setEnabled(true);
+        ((Button)this.findViewById(R.id.btn_xmm)).setEnabled(true);
+        ((Button)this.findViewById(R.id.btn_xpp)).setEnabled(true);
+        ((Button)this.findViewById(R.id.btn_ymm)).setEnabled(true);
+        ((Button)this.findViewById(R.id.btn_ypp)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.editText_x)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.editText_y)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.total_length)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.frequency)).setEnabled(true);
     }
 
 
-    private void disableCollectBtn(){
+    private void disableComponents(){
         Button btn = (Button)this.findViewById(R.id.button_collect) ;
         btn.setEnabled(false);
+        ((Button)this.findViewById(R.id.btn_xmm)).setEnabled(false);
+        ((Button)this.findViewById(R.id.btn_xpp)).setEnabled(false);
+        ((Button)this.findViewById(R.id.btn_ymm)).setEnabled(false);
+        ((Button)this.findViewById(R.id.btn_ypp)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.editText_x)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.editText_y)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.total_length)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.frequency)).setEnabled(false);
+
     }
 
 
@@ -118,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
      */
     public class CollectHandler{
 
-        public void resetCollectButton(){
-            resetCollectBtn();
+        public void resetViewComponents(){
+            resetComponents();
         }
 
-        public void disableCollectButton(){
-            disableCollectBtn();
+        public void disableViewComponents(){
+            disableComponents();
         }
 
         public void setCollectButtonText(String text){
@@ -147,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         public WLANToggleListener(WifiSignalProcessor wifiProcessor){
             this.wpo = wifiProcessor;
             if(!wpo.isWifiOn()){
-                disableCollectBtn();
+                disableComponents();
             }
         }
 
@@ -160,11 +177,11 @@ public class MainActivity extends AppCompatActivity {
             if(isChecked){
                 ((ToggleButton)findViewById(R.id.toggleButton_capture)).setBackgroundColor(Color.rgb(0xFF, 0, 0)) ;
                 wpo.startScan() ;
-                resetCollectBtn();
+                resetComponents();
             }else{
                 ((ToggleButton)findViewById(R.id.toggleButton_capture)).setBackgroundColor(Color.rgb(0x76, 0xEE, 0)) ;
                 wpo.closeWifi() ;
-                disableCollectBtn();
+                disableComponents();
             }
         }
     }
@@ -201,10 +218,54 @@ public class MainActivity extends AppCompatActivity {
             LocationRecorder recorder = new LocationRecorder(activity, wifiProcessor,
                     new Location(Integer.parseInt(xString), Integer.parseInt(yString)),
                     new CollectHandler());
-            disableCollectBtn();
+            disableComponents();
             recorder.collect();
             Toast.makeText(activity, getString(R.string.info_start_collecting),
                     Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * action to be executed when x++ button is pressed
+     * @param v
+     */
+    public void click_xpp(View v){
+        addCoordinate(R.id.editText_x, 1);
+    }
+
+    /**
+     * action to be executed when x-- button is pressed
+     * @param v
+     */
+    public void click_xmm(View v){
+        addCoordinate(R.id.editText_x, -1);
+    }
+
+    /**
+     * action to be executed when y++ button is pressed
+     * @param v
+     */
+    public void click_ypp(View v){
+        addCoordinate(R.id.editText_y, 1);
+    }
+
+    /**
+     * action to be executed when y-- button is pressed
+     * @param v
+     */
+    public void click_ymm(View v){
+        addCoordinate(R.id.editText_y, -1);
+    }
+
+    private void addCoordinate(int id, int adder){
+        EditText et = ((EditText)this.findViewById(id));
+        try {
+            int value = Integer.parseInt(et.getText().toString());
+            value += adder;
+            et.setText(""+value);
+        } catch (Exception e){
+            Toast.makeText(this.getApplicationContext(), this.getString(R.string.err_coor_not_num), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

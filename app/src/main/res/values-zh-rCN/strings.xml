@@ -7,6 +7,12 @@
     <string name="total_length_info">单点采集次数</string>
     <string name="btn_collect">收集坐标信息</string>
     <string name="btn_collecting">正在收集, 剩余 %d 秒...</string>
+    <string name="btn_xpp">x++</string>
+    <string name="btn_xmm">x--</string>
+    <string name="btn_ypp">y++</string>
+    <string name="btn_ymm">y--</string>
+
+    <string name="err_coor_not_num">坐标必须是整型</string>
 
     <string name="main_title">Wifi信号收集器</string>
     <string name="position_info">当前坐标(x, y)</string>
