@@ -71,13 +71,20 @@ public class LocationRecorder extends Thread{
 			wifi.startScan();
 			int frequency = Config.getFrequency();
 			int totalLength = Config.getTotalLength();
+			int totalTrainLength = Config.getTotalTrainLength();
+			int totalTestLength = Config.getTotalTestLength();
 			final long duration = (long) ((((double)totalLength)/frequency)*1000);
-			LocationPointInfo info =  new LocationPointInfo(location);
+			LocationPointInfo trainSet =  new LocationPointInfo(location);
+			LocationPointInfo testSet =  new LocationPointInfo(location);
 			int gap = 1000/frequency;
 			final long t1 = System.currentTimeMillis();
 			int index = 1;
 			while(t1+duration > System.currentTimeMillis()){
-				info.addSignals(wifi.getSignals(index++));
+				if(index <= totalTrainLength) {
+					trainSet.addSignals(wifi.getSignals(index++));
+				}else{
+					testSet.addSignals(wifi.getSignals(index++ - totalTrainLength));
+				}
 				wifi.startScan();
 				new Handler(Looper.getMainLooper()).post(new Runnable() {
 					@Override
@@ -96,9 +103,11 @@ public class LocationRecorder extends Thread{
 			}
 			
 			// Data collected, write to file
-			String content = info.toCSVStr();
+			String trainContent = trainSet.toCSVStr();
+			String testContent = testSet.toCSVStr();
 			try {
-				CSVSaver.save(info.getLocation(), content);
+				CSVSaver.saveTrainSet(trainSet.getLocation(), trainContent);
+				CSVSaver.saveTestSet(testSet.getLocation(), testContent);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -21,7 +21,7 @@ import com.gordon.exp.test.as.domain.Config;
 import com.gordon.exp.test.as.domain.Location;
 import com.gordon.exp.test.as.service.LocationRecorder;
 import com.gordon.exp.test.as.service.WifiSignalProcessor;
-
+import com.gordon.exp.util.Utils;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         ((EditText)findViewById(R.id.frequency)).setText(""+Config.getFrequency()) ;
 //        ((EditText)findViewById(R.id.duration)).setText(""+Config.getDuration()) ;
-        ((EditText)findViewById(R.id.total_length)).setText("" + Config.getTotalLength()) ;
+        ((EditText)findViewById(R.id.total_train_length)).setText("" + Config.getTotalTrainLength()) ;
+        ((EditText)findViewById(R.id.total_test_length)).setText("" + Config.getTotalTestLength()) ;
         ((EditText)findViewById(R.id.editText_x)).setText("-2") ;
         ((EditText)findViewById(R.id.editText_y)).setText("-2") ;
 
@@ -101,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
         ((Button)this.findViewById(R.id.btn_ypp)).setEnabled(true);
         ((EditText)this.findViewById(R.id.editText_x)).setEnabled(true);
         ((EditText)this.findViewById(R.id.editText_y)).setEnabled(true);
-        ((EditText)this.findViewById(R.id.total_length)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.total_train_length)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.total_test_length)).setEnabled(true);
         ((EditText)this.findViewById(R.id.frequency)).setEnabled(true);
     }
 
@@ -115,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
         ((Button)this.findViewById(R.id.btn_ypp)).setEnabled(false);
         ((EditText)this.findViewById(R.id.editText_x)).setEnabled(false);
         ((EditText)this.findViewById(R.id.editText_y)).setEnabled(false);
-        ((EditText)this.findViewById(R.id.total_length)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.total_train_length)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.total_test_length)).setEnabled(false);
         ((EditText)this.findViewById(R.id.frequency)).setEnabled(false);
 
     }
@@ -206,14 +209,36 @@ public class MainActivity extends AppCompatActivity {
             String xString = ((EditText)findViewById(R.id.editText_x)).getText().toString() ;
             String yString = ((EditText)findViewById(R.id.editText_y)).getText().toString() ;
             String frequencyString = ((EditText)findViewById(R.id.frequency)).getText().toString() ;
-            String totalLengthString = ((EditText)findViewById(R.id.total_length)).getText().toString() ;
+            String totalTrainLengthString = ((EditText)findViewById(R.id.total_train_length)).getText().toString() ;
+            String totalTestLengthString = ((EditText)findViewById(R.id.total_test_length)).getText().toString() ;
+            if(Utils.isEmpty(totalTrainLengthString)){
+                totalTrainLengthString = "10";
+                ((EditText)findViewById(R.id.total_train_length)).setText(totalTrainLengthString);
+            }
+            if(Utils.isEmpty(totalTestLengthString)){
+                totalTestLengthString = "10";
+                ((EditText)findViewById(R.id.total_test_length)).setText(totalTestLengthString);
+            }
             try{
                 int freq = Integer.parseInt(frequencyString);
                 Config.setFrequency(freq);
             }catch(Exception e){}
             try{
-                int totalLength = Integer.parseInt(totalLengthString);
-                Config.setTotalLength(totalLength);
+                int totalTrainLength = Integer.parseInt(totalTrainLengthString);
+                int totalTestLength = Integer.parseInt(totalTestLengthString);
+                if(totalTrainLength <= 0){
+                    totalTestLengthString = "10";
+                    totalTrainLength = 10;
+                    ((EditText)findViewById(R.id.total_test_length)).setText(totalTestLengthString);
+                }
+                if(totalTrainLength <= 0){
+                    totalTrainLengthString = "10";
+                    totalTrainLength = 10;
+                    ((EditText)findViewById(R.id.total_train_length)).setText(totalTrainLengthString);
+                }
+                Config.setTotalTestLength(totalTestLength);
+                Config.setTotalTrainLength(totalTrainLength);
+                Config.setTotalLength(totalTestLength + totalTrainLength);
             } catch (Exception e){}
             LocationRecorder recorder = new LocationRecorder(activity, wifiProcessor,
                     new Location(Integer.parseInt(xString), Integer.parseInt(yString)),

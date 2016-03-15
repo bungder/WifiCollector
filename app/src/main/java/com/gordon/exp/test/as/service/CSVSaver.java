@@ -32,10 +32,32 @@ public class CSVSaver {
 	 * @throws Exception 
 	 */
 	@SuppressLint("SimpleDateFormat")
-	public static void save(Location location, String content) throws Exception{
+	private static void save(String dir, Location location, String content) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String path = Config.dir+location.getX()+"-"+location.getY()+"_" + sdf.format(new Date()) + ".csv";
+		String path = dir+location.getX()+"-"+location.getY()+"_" + sdf.format(new Date()) + ".csv";
 		path = FileUtils.loopFileName(FileUtils.getFullFileName(path));
 		AndroidFileUtils.saveToSDCard(path, content);
+	}
+
+	/**
+	 * save training data to csv format file.
+	 * @param location
+	 * @param content
+	 * @throws Exception
+	 */
+	public static void saveTrainSet(Location location, String content) throws Exception{
+		String dir = Config.dir+"train/";
+		save(dir, location, content);
+	}
+
+	/**
+	 * save test data to csv format file.
+	 * @param location
+	 * @param content
+	 * @throws Exception
+	 */
+	public static void saveTestSet(Location location, String content) throws Exception{
+		String dir = Config.dir+"test/";
+		save(dir, location, content);
 	}
 }

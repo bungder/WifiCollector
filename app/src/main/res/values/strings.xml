@@ -4,7 +4,8 @@
     <string name="app_name">Wifi RSS Collector</string>
     <string name="action_settings">Settings</string>
     <string name="frequency_info">Collect frequency(/second)</string>
-    <string name="total_length_info">Collect times per point</string>
+    <string name="total_train_length_info">Collect times per point(train)</string>
+    <string name="total_test_length_info">Collect times per point(test)</string>
     <string name="btn_collect">Collect Signal info</string>
     <string name="btn_collecting">Collecting. Remains %d seconds...</string>
     <string name="btn_xpp">x++</string>

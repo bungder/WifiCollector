@@ -44,6 +44,9 @@ public class Config {
 	private static int frequency = 10 ;
 	/** collect times per point */
 	private static int totalLength = 10;
+
+	private static int totalTrainLength = 10;
+	private static int totalTestLength = 10;
 	/** server address */
 	private static String ftpAddress;
 	/** server port */
@@ -189,6 +192,23 @@ public class Config {
 	public static void setProtocol(TransferProtocol protocol) {
 		Config.protocol = protocol;
 	}
+
+	public static int getTotalTrainLength() {
+		return totalTrainLength;
+	}
+
+	public static void setTotalTrainLength(int totalTrainLength) {
+		Config.totalTrainLength = totalTrainLength;
+	}
+
+	public static int getTotalTestLength() {
+		return totalTestLength;
+	}
+
+	public static void setTotalTestLength(int totalTestLength) {
+		Config.totalTestLength = totalTestLength;
+	}
+
 	/**
 	 * save parameter configuration
 	 * @throws IOException 
@@ -240,6 +260,15 @@ public class Config {
 		serializer.startTag(null, "totalLength") ;
 		serializer.text(""+totalLength) ;
 		serializer.endTag(null, "totalLength") ;
+
+
+		serializer.startTag(null, "totalTrainLength") ;
+		serializer.text(""+totalTrainLength) ;
+		serializer.endTag(null, "totalTrainLength") ;
+
+		serializer.startTag(null, "totalTestLength") ;
+		serializer.text(""+totalTestLength) ;
+		serializer.endTag(null, "totalTestLength") ;
 //		serializer.attribute(null, "ip", hostAddress) ;
 //		serializer.attribute(null, "port", ""+port) ;
 //		serializer.endTag(null, "ip") ;
@@ -281,6 +310,10 @@ public class Config {
 						frequency = Integer.parseInt(parser.nextText()) ;
 					}else if("totalLength".equalsIgnoreCase(parser.getName())){
 						totalLength = Integer.parseInt(parser.nextText());
+					}else if("totalTrainLength".equalsIgnoreCase(parser.getName())){
+						totalTrainLength = Integer.parseInt(parser.nextText());
+					}else if("totalTestLength".equalsIgnoreCase(parser.getName())){
+						totalTestLength = Integer.parseInt(parser.nextText());
 					}else if("ftpAddress".equalsIgnoreCase(parser.getName())){
 						ftpAddress = parser.nextText();
 					}else if("ftpPort".equalsIgnoreCase(parser.getName())){

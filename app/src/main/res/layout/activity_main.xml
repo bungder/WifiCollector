@@ -81,13 +81,34 @@
         android:layout_below="@+id/leaner_layout_3" >
 
         <TextView
-            android:id="@+id/total_length_info"
+            android:id="@+id/total_train_length_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_length_info" />
+            android:text="@string/total_train_length_info" />
 
         <EditText
-            android:id="@+id/total_length"
+            android:id="@+id/total_train_length"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/leaner_layout_6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/leaner_layout_5" >
+
+        <TextView
+            android:id="@+id/total_test_length_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_test_length_info" />
+
+        <EditText
+            android:id="@+id/total_test_length"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -99,7 +120,7 @@
         android:id="@+id/button_collect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/leaner_layout_5"
+        android:layout_below="@+id/leaner_layout_6"
         android:text="@string/btn_collect"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:background="#76ff7c"

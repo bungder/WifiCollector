@@ -25,4 +25,7 @@ dependencies {
     compile files('/home/tan/AndroidStudioProjects/AndroidStudioTest/libs/commons-net-3.3.jar')
     compile files('/home/tan/AndroidStudioProjects/AndroidStudioTest/libs/gordon-utils.jar')
     compile files('/home/tan/AndroidStudioProjects/AndroidStudioTest/libs/jsch-0.1.53.jar')
+    compile files('/home/tan/Documents/repo/bungder/WifiCollector/libs/gordon-utils.jar')
+    compile files('/home/tan/Documents/repo/bungder/WifiCollector/libs/commons-net-3.3.jar')
+    compile files('/home/tan/Documents/repo/bungder/WifiCollector/libs/jsch-0.1.53.jar')
 }
