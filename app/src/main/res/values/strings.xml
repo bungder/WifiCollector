@@ -6,6 +6,7 @@
     <string name="frequency_info">Collect frequency(/second)</string>
     <string name="total_train_length_info">Collect times per point(train)</string>
     <string name="total_test_length_info">Collect times per point(test)</string>
+    <string name="data_prefix_info">Data set prefix</string>
     <string name="btn_collect">Collect Signal info</string>
     <string name="btn_collecting">Collecting. Remains %d seconds...</string>
     <string name="btn_xpp">x++</string>

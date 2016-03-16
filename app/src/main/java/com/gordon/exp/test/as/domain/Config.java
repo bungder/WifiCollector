@@ -37,6 +37,10 @@ public class Config {
 
 	/** directory to save data file */
 	public static final String dir = Environment.getExternalStorageDirectory().getPath()+"/002wifi/";
+	public static final String dir_train = dir + "train/";
+	public static final String dir_test = dir + "test/";
+
+	public static String datasetPrefix = "main";
 	private static String hostAddress = "0.0.0.0" ;
 
 	private static int port = 220 ;
@@ -209,6 +213,14 @@ public class Config {
 		Config.totalTestLength = totalTestLength;
 	}
 
+	public static String getDatasetPrefix() {
+		return datasetPrefix;
+	}
+
+	public static void setDatasetPrefix(String datasetPrefix) {
+		Config.datasetPrefix = datasetPrefix;
+	}
+
 	/**
 	 * save parameter configuration
 	 * @throws IOException 
@@ -235,6 +247,10 @@ public class Config {
 		serializer.startTag(null, "port") ;
 		serializer.text(""+port) ;
 		serializer.endTag(null, "port") ;
+
+		serializer.startTag(null, "datasetPrefix") ;
+		serializer.text(datasetPrefix) ;
+		serializer.endTag(null, "datasetPrefix") ;
 
 
 		serializer.startTag(null, "ftpAddress") ;
@@ -324,6 +340,8 @@ public class Config {
 						passwd = parser.nextText();
 					}else if("protocol".equalsIgnoreCase(parser.getName())){
 						protocol = TransferProtocol.values()[Integer.parseInt(parser.nextText())];
+					}else if("datasetPrefix".equalsIgnoreCase(parser.getName())){
+						datasetPrefix = parser.nextText();
 					}
 					break ;
 				case XmlPullParser.END_TAG :

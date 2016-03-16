@@ -6,6 +6,7 @@
     <string name="frequency_info">采集频率(次/秒)</string>
     <string name="total_train_length_info">单点采集次数(训练集)</string>
     <string name="total_test_length_info">单点采集次数(测试集)</string>
+    <string name="data_prefix_info">数据集前缀</string>
     <string name="btn_collect">收集坐标信息</string>
     <string name="btn_collecting">正在收集, 剩余 %d 秒...</string>
     <string name="btn_xpp">x++</string>

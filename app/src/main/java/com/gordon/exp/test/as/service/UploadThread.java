@@ -16,7 +16,10 @@ import com.gordon.exp.util.FileUtils;
 
 import java.io.File;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 
 /**
@@ -44,15 +47,34 @@ public class UploadThread extends Thread {
 		String remoteDir = "wifi/";
 		Map<String, String> pathMaps = new LinkedHashMap<String, String>();
 		File[] files = new File(dir).listFiles();
-		for (File f : files) {
+		/*for (File f : files) {
 			if (f.isDirectory()) {
 				continue;
 			}
 			if ("csv".equalsIgnoreCase(FileUtils.getSuffix(f.getName()))) {
 				pathMaps.put(f.getAbsolutePath(), remoteDir + f.getName());
 			}
+		}*/
+		Queue<File> dirs = new LinkedList<File>();
+		File appRoot = new File(dir);
+		dirs.add(appRoot);
+		while(!dirs.isEmpty()){
+			File d = dirs.poll();
+			String dirName = "/";
+			File[] fs = d.listFiles();
+			while(!d.equals(appRoot)){
+				dirName = d.getName() + "/" + dirName;
+				d = d.getParentFile();
+			}
+			for(File f : fs) {
+				if (f.isDirectory()) {
+					dirs.add(f);
+				}else if ("csv".equalsIgnoreCase(FileUtils.getSuffix(f.getName()))) {
+					pathMaps.put(f.getAbsolutePath(), remoteDir + dirName + f.getName());
+				}
+			}
 		}
-		System.out.println(String.format(Config.getProtocol() + " %s:%s@%s:%d", Config.getUsername(), Config.getPasswd(), Config.getFtpAddress("127.0.0.1"), 
+		System.out.println(String.format(Config.getProtocol() + " %s:%s@%s:%d", Config.getUsername(), Config.getPasswd(), Config.getFtpAddress("127.0.0.1"),
 				Config.getFtpPort(21)));
 		switch (Config.getProtocol()) {
 		case FTP:

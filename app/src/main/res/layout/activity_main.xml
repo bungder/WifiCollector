@@ -167,5 +167,26 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/leaner_layout_7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/coordinate_control" >
+
+        <TextView
+            android:id="@+id/data_prefix_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_prefix_info" />
+
+        <EditText
+            android:id="@+id/data_prefix"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+    </LinearLayout>
+
 
 </RelativeLayout>

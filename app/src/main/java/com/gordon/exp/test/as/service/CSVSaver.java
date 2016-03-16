@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.gordon.exp.test.as.domain.Config;
 import com.gordon.exp.test.as.domain.Location;
@@ -23,6 +24,8 @@ public class CSVSaver {
 	
 	static{
 		FileUtils.mkdir(new File(Config.dir));
+//		FileUtils.mkdir(new File(Config.dir_test));
+//		FileUtils.mkdir(new File(Config.dir_train));
 	}
 	
 	/**
@@ -35,7 +38,10 @@ public class CSVSaver {
 	private static void save(String dir, Location location, String content) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String path = dir+location.getX()+"-"+location.getY()+"_" + sdf.format(new Date()) + ".csv";
-		path = FileUtils.loopFileName(FileUtils.getFullFileName(path));
+		Log.i("kkkkk", "00000save: " + path);
+		Log.i("kkkkk", "loopName: " + path);
+		path = FileUtils.loopFileName(path);
+		Log.i("kkkkk", "11111save: " + path);
 		AndroidFileUtils.saveToSDCard(path, content);
 	}
 
@@ -46,8 +52,9 @@ public class CSVSaver {
 	 * @throws Exception
 	 */
 	public static void saveTrainSet(Location location, String content) throws Exception{
-		String dir = Config.dir+"train/";
-		save(dir, location, content);
+//		String dir = Config.dir+"train/";
+//		save(Config.dir_train, location, content);
+		save(Config.getDatasetPrefix()+"/train/", location, content);
 	}
 
 	/**
@@ -57,7 +64,8 @@ public class CSVSaver {
 	 * @throws Exception
 	 */
 	public static void saveTestSet(Location location, String content) throws Exception{
-		String dir = Config.dir+"test/";
-		save(dir, location, content);
+//		String dir = Config.dir+"test/";
+//		save(Config.dir_test, location, content);
+		save(Config.getDatasetPrefix()+"/test/", location, content);
 	}
 }

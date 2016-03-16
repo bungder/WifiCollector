@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.total_test_length)).setText("" + Config.getTotalTestLength()) ;
         ((EditText)findViewById(R.id.editText_x)).setText("-2") ;
         ((EditText)findViewById(R.id.editText_y)).setText("-2") ;
+        ((EditText)findViewById(R.id.data_prefix)).setText(Config.getDatasetPrefix());
 
         // Button to record wifi signal
         ((Button)this.findViewById(R.id.button_collect)).setOnClickListener(new CollectButtonClickListener(this)) ;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText)this.findViewById(R.id.total_train_length)).setEnabled(true);
         ((EditText)this.findViewById(R.id.total_test_length)).setEnabled(true);
         ((EditText)this.findViewById(R.id.frequency)).setEnabled(true);
+        ((EditText)this.findViewById(R.id.data_prefix)).setEnabled(true);
     }
 
 
@@ -120,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText)this.findViewById(R.id.total_train_length)).setEnabled(false);
         ((EditText)this.findViewById(R.id.total_test_length)).setEnabled(false);
         ((EditText)this.findViewById(R.id.frequency)).setEnabled(false);
+        ((EditText)this.findViewById(R.id.data_prefix)).setEnabled(false);
 
     }
 
@@ -211,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
             String frequencyString = ((EditText)findViewById(R.id.frequency)).getText().toString() ;
             String totalTrainLengthString = ((EditText)findViewById(R.id.total_train_length)).getText().toString() ;
             String totalTestLengthString = ((EditText)findViewById(R.id.total_test_length)).getText().toString() ;
+            String datasetPrefix = ((EditText)findViewById(R.id.data_prefix)).getText().toString() ;
             if(Utils.isEmpty(totalTrainLengthString)){
                 totalTrainLengthString = "10";
                 ((EditText)findViewById(R.id.total_train_length)).setText(totalTrainLengthString);
@@ -218,6 +222,12 @@ public class MainActivity extends AppCompatActivity {
             if(Utils.isEmpty(totalTestLengthString)){
                 totalTestLengthString = "10";
                 ((EditText)findViewById(R.id.total_test_length)).setText(totalTestLengthString);
+            }
+            if(Utils.isEmpty(datasetPrefix)){
+                datasetPrefix = Config.datasetPrefix;
+                ((EditText)findViewById(R.id.data_prefix)).setText(Config.getDatasetPrefix());
+            }else{
+                Config.setDatasetPrefix(datasetPrefix);
             }
             try{
                 int freq = Integer.parseInt(frequencyString);
