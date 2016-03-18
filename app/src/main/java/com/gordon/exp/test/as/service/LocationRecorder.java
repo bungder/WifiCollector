@@ -2,8 +2,16 @@ package com.gordon.exp.test.as.service;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.gordon.exp.test.as.R;
@@ -11,6 +19,8 @@ import com.gordon.exp.test.as.activity.MainActivity;
 import com.gordon.exp.test.as.domain.Config;
 import com.gordon.exp.test.as.domain.Location;
 import com.gordon.exp.test.as.domain.LocationPointInfo;
+
+import java.io.IOException;
 
 
 /**
@@ -111,10 +121,26 @@ public class LocationRecorder extends Thread{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//Finish collecting data, hint user
 			new Handler(Looper.getMainLooper()).post(new Runnable() {
 
 				@Override
 				public void run() {
+					// display voice
+					AudioManager audioService = (AudioManager) activity
+							.getSystemService(Context.AUDIO_SERVICE);
+					boolean shouldPlayBeep = true;
+					if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+						shouldPlayBeep = false;
+					}
+					if(shouldPlayBeep) {
+						Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+						Ringtone r = RingtoneManager.getRingtone(activity.getApplicationContext(), notification);
+						r.play();
+					}
+
+
+					// make text
 					Toast.makeText(activity, activity.getString(R.string.info_collected),
 							Toast.LENGTH_LONG).show();
 					if(handler != null){
