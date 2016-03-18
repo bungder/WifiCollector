@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -35,21 +37,23 @@ public class Config {
 		SFTP
 	}
 
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
 	/** directory to save data file */
 	public static final String dir = Environment.getExternalStorageDirectory().getPath()+"/002wifi/";
 	public static final String dir_train = dir + "train/";
 	public static final String dir_test = dir + "test/";
 
-	public static String datasetPrefix = "main";
+	public static String datasetPrefix = sdf.format(new Date());
 	private static String hostAddress = "0.0.0.0" ;
 
 	private static int port = 220 ;
 	/** collect times per second */
-	private static int frequency = 10 ;
+	private static int frequency = 1 ;
 	/** collect times per point */
-	private static int totalLength = 10;
+	private static int totalLength = 110;
 
-	private static int totalTrainLength = 10;
+	private static int totalTrainLength = 100;
 	private static int totalTestLength = 10;
 	/** server address */
 	private static String ftpAddress;
