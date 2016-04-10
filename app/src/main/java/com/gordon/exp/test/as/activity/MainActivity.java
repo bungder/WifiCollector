@@ -23,13 +23,15 @@ import com.gordon.exp.test.as.service.LocationRecorder;
 import com.gordon.exp.test.as.service.WifiSignalProcessor;
 import com.gordon.exp.util.Utils;
 
+import java.text.DecimalFormat;
+
 
 public class MainActivity extends AppCompatActivity {
 
     /** WIFI Signal Manager */
     private WifiSignalProcessor wifiProcessor = null ;
 
-
+    private int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e){}
             LocationRecorder recorder = new LocationRecorder(activity, wifiProcessor,
                     new Location(Integer.parseInt(xString), Integer.parseInt(yString)),
-                    new CollectHandler());
+                    new CollectHandler(), new DecimalFormat("0000").format(count++));
             disableComponents();
             recorder.collect();
             Toast.makeText(activity, getString(R.string.info_start_collecting),

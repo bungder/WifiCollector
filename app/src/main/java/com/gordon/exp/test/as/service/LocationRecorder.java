@@ -37,6 +37,7 @@ public class LocationRecorder extends Thread{
 	private MainActivity.CollectHandler handler;
 	/** if it is collecting data */
 	private volatile boolean collecting = false;
+	private String count = "0";
 	
 	/**
 	 * 
@@ -44,11 +45,12 @@ public class LocationRecorder extends Thread{
 	 * @param location coordinate to be recorded
 	 * @param handler
 	 */
-	public LocationRecorder(Activity activity, WifiSignalProcessor wifi, Location location, MainActivity.CollectHandler handler){
+	public LocationRecorder(Activity activity, WifiSignalProcessor wifi, Location location, MainActivity.CollectHandler handler, String count){
 		this.activity = activity;
 		this.wifi = wifi;
 		this.location = location;
 		this.handler = handler;
+		this.count = count;
 	}
 	
 	/**
@@ -116,8 +118,8 @@ public class LocationRecorder extends Thread{
 			String trainContent = trainSet.toCSVStr();
 			String testContent = testSet.toCSVStr();
 			try {
-				CSVSaver.saveTrainSet(trainSet.getLocation(), trainContent);
-				CSVSaver.saveTestSet(testSet.getLocation(), testContent);
+				CSVSaver.saveTrainSet(count, trainSet.getLocation(), trainContent);
+				CSVSaver.saveTestSet(count, testSet.getLocation(), testContent);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

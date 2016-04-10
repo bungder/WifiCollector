@@ -35,13 +35,13 @@ public class CSVSaver {
 	 * @throws Exception 
 	 */
 	@SuppressLint("SimpleDateFormat")
-	private static void save(String dir, Location location, String content) throws Exception{
+	private static void save(String count, String dir, Location location, String content) throws Exception{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String path = dir+location.getX()+"-"+location.getY()+"_" + sdf.format(new Date()) + ".csv";
-		Log.i("kkkkk", "00000save: " + path);
+		String path = dir + count + "_" + location.getX()+"-"+location.getY()+"_" + sdf.format(new Date()) + ".csv";
+		Log.i("kkkkk", "33333save: " + path);
 		Log.i("kkkkk", "loopName: " + path);
 		path = FileUtils.loopFileName(path);
-		Log.i("kkkkk", "11111save: " + path);
+		Log.i("kkkkk", "44444save: " + path);
 		AndroidFileUtils.saveToSDCard(path, content);
 	}
 
@@ -51,10 +51,10 @@ public class CSVSaver {
 	 * @param content
 	 * @throws Exception
 	 */
-	public static void saveTrainSet(Location location, String content) throws Exception{
+	public static void saveTrainSet(String count, Location location, String content) throws Exception{
 //		String dir = Config.dir+"train/";
 //		save(Config.dir_train, location, content);
-		save(Config.getDatasetPrefix()+"/train/", location, content);
+		save(count, Config.getDatasetPrefix()+"/train/", location, content);
 	}
 
 	/**
@@ -63,9 +63,9 @@ public class CSVSaver {
 	 * @param content
 	 * @throws Exception
 	 */
-	public static void saveTestSet(Location location, String content) throws Exception{
+	public static void saveTestSet(String count, Location location, String content) throws Exception{
 //		String dir = Config.dir+"test/";
 //		save(Config.dir_test, location, content);
-		save(Config.getDatasetPrefix()+"/test/", location, content);
+		save(count, Config.getDatasetPrefix()+"/test/", location, content);
 	}
 }
